@@ -1,0 +1,168 @@
+@prefix cb: <http://users.jyu.fi/~chnguyen/TIES437/cottage-booking.owl#> .
+@prefix cbd: <http://localhost:8080/resources/rdf/cottage-booking-data.rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+#
+#
+#
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+#
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Helsinki
+
+cbd:Helsinki a owl:NamedIndividual , cb:City ;
+	cb:hasLatitude "60.16985"^^xsd:float ;
+	cb:hasLongitude "24.938366"^^xsd:float ;
+	cb:hasName "Helsinki"^^xsd:string .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Jyväskylä
+
+cbd:Jyväskylä a owl:NamedIndividual , cb:City ;
+	cb:hasLatitude "62.242645"^^xsd:float ;
+	cb:hasLongitude "25.747366"^^xsd:float ;
+	cb:hasName "Jyväskylä"^^xsd:string .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Kesäniementie_7_1
+
+cbd:Kesäniementie_7_1 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Kesäniementie_7_2
+
+cbd:Kesäniementie_7_2 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Kesäniementie_7_3
+
+cbd:Kesäniementie_7_3 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "3"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Lyhdekatu_7_1
+
+cbd:Lyhdekatu_7_1 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Lyhdekatu_7_2
+
+cbd:Lyhdekatu_7_2 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Munkkiniemenranta_37_1
+
+cbd:Munkkiniemenranta_37_1 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Munkkiniemenranta_37_2
+
+cbd:Munkkiniemenranta_37_2 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "3"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Nyröläntie_823_1
+
+cbd:Nyröläntie_823_1 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Nyröläntie_823_2
+
+cbd:Nyröläntie_823_2 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Nyröläntie_823_3
+
+cbd:Nyröläntie_823_3 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "3"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Nyröläntie_823_4
+
+cbd:Nyröläntie_823_4 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "3"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Susiraja_82_1
+
+cbd:Susiraja_82_1 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "4"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Susiraja_82_2
+
+cbd:Susiraja_82_2 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Susiraja_82_3
+
+cbd:Susiraja_82_3 a owl:NamedIndividual , cb:Bedroom ;
+	cb:hasPlaceCount "2"^^xsd:int .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#Tampere
+
+cbd:Tampere a owl:NamedIndividual , cb:City ;
+	cb:hasLatitude "61.497772"^^xsd:float ;
+	cb:hasLongitude "23.760956"^^xsd:float ;
+	cb:hasName "Tampere"^^xsd:string .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#booking1
+
+cbd:booking1 a owl:NamedIndividual , cb:Booking ;
+	cb:hasBookerName "Matti"^^xsd:string ;
+	cb:hasEndDate "2017-07-07T12:00:00+02:00"^^xsd:dateTime ;
+	cb:hasStartDate "2017-07-01T12:00:00+02:00"^^xsd:dateTime .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#cottage1
+
+cbd:cottage1 a owl:NamedIndividual , cb:Cottage ;
+	cb:hasBedroom cbd:Lyhdekatu_7_1 , cbd:Lyhdekatu_7_2 ;
+	cb:hasDistanceToLake "31.8"^^xsd:float ;
+	cb:hasImageURL "http://users.jyu.fi/~chnguyen/TIES437/Lyhdekatu%207"^^xsd:string ;
+	cb:hasLatitude "62.252735"^^xsd:float ;
+	cb:hasLongitude "25.717007"^^xsd:float ;
+	cb:hasName "Lyhdekatu 7"^^xsd:string .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#cottage2
+
+cbd:cottage2 a owl:NamedIndividual , cb:Cottage ;
+	cb:hasBedroom cbd:Nyröläntie_823_1 , cbd:Nyröläntie_823_2 , cbd:Nyröläntie_823_3 , cbd:Nyröläntie_823_4 ;
+	cb:hasDistanceToLake "180.59"^^xsd:float ;
+	cb:hasImageURL "http://users.jyu.fi/~chnguyen/TIES437/Nyr%C3%B6l%C3%A4ntie%20823"^^xsd:string ;
+	cb:hasLatitude "62.35973"^^xsd:float ;
+	cb:hasLongitude "25.451258"^^xsd:float ;
+	cb:hasName "Nyröläntie 823"^^xsd:string .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#cottage3
+
+cbd:cottage3 a owl:NamedIndividual , cb:Cottage ;
+	cb:hasBedroom cbd:Kesäniementie_7_1 , cbd:Kesäniementie_7_2 , cbd:Kesäniementie_7_3 ;
+	cb:hasDistanceToLake "44.25"^^xsd:float ;
+	cb:hasImageURL "http://users.jyu.fi/~chnguyen/TIES437/Kes%C3%A4niementie%207"^^xsd:string ;
+	cb:hasLatitude "61.581104"^^xsd:float ;
+	cb:hasLongitude "23.609806"^^xsd:float ;
+	cb:hasName "Kesäniementie 7"^^xsd:string .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#cottage4
+
+cbd:cottage4 a owl:NamedIndividual , cb:Cottage ;
+	cb:hasBedroom cbd:Munkkiniemenranta_37_1 , cbd:Munkkiniemenranta_37_2 ;
+	cb:hasBooking cbd:booking1 ;
+	cb:hasDistanceToLake "68.55"^^xsd:float ;
+	cb:hasImageURL "http://users.jyu.fi/~chnguyen/TIES437/Munkkiniemenranta%2037"^^xsd:string ;
+	cb:hasLatitude "60.199337"^^xsd:float ;
+	cb:hasLongitude "24.862597"^^xsd:float ;
+	cb:hasName "Munkkiniemenranta 37"^^xsd:string .
+#
+# http://localhost:8080/resources/rdf/cottage-booking-data.rdf#cottage5
+
+cbd:cottage5 a owl:NamedIndividual , cb:Cottage ;
+	cb:hasBedroom cbd:Susiraja_82_1 , cbd:Susiraja_82_2 , cbd:Susiraja_82_3 ;
+	cb:hasDistanceToLake "129735.99"^^xsd:float ;
+	cb:hasImageURL "http://users.jyu.fi/~chnguyen/TIES437/Susiraja%2082"^^xsd:string ;
+	cb:hasLatitude "60.258823"^^xsd:float ;
+	cb:hasLongitude "25.151419"^^xsd:float ;
+	cb:hasName "Susiraja 82"^^xsd:string .
+#
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
