@@ -1,28 +1,44 @@
-var wordJSONArray;
+var resultDiv = $('#result');
 
-var containerDiv = $('#container')[0];
+$(document).ready(function () {
+    $.ajax({
+        url: cityUrl,
+        type: 'GET',
+        //Ajax events
+        success: loadCity,
+        //Options to tell jQuery not to process data or worry about content-type.
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+});
 
-var wordElementPrefix = 'word-';
+function loadCity(data) {
+    console.log(data);
 
-$('input#button-transcript').click(function () {
-    resetResult();
-    // disableForm();
+    var cityJSONArray = JSON.parse(data);
+    for (var i = 0; i <= cityJSONArray.length - 1; i++) {
+        var cityJSON = cityJSONArray[i];
+        var cityOptionElement = document.createElement('option');
+        cityOptionElement.innerText = cityJSON.name;
+        cityOptionElement.value = cityJSON.uri;
 
+        if (i == 0) {
+            cityOptionElement.setAttribute('selected', 'selected');
+        }
+
+        document.getElementById('city').appendChild(cityOptionElement);
+    }
+}
+
+$('input#button-search').click(function () {
     var formData = new FormData($('form')[0]);
     $.ajax({
-        url: postUrl,  //Server script to process data
+        url: bookingUrl,  //Server script to process data
         type: 'POST',
-//            xhr: function () {  // Custom XMLHttpRequest
-//                var myXhr = $.ajaxSettings.xhr();
-//                if (myXhr.upload) { // Check if upload property exists
-//                    myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // For handling the progress of the upload
-//                }
-//                return myXhr;
-//            },
         //Ajax events
         beforeSend: disableForm,
-        success: loadResult,
-//            error: errorHandler,
+        success: loadCottage,
         // Form data
         data: formData,
         //Options to tell jQuery not to process data or worry about content-type.
@@ -32,139 +48,207 @@ $('input#button-transcript').click(function () {
     });
 });
 
-
-function loadResult(data) {
+function loadCottage(data) {
     enableForm();
+    resetResult();
 
-    wordJSONArray = JSON.parse(data);
-    for (var i = 0; i <= wordJSONArray.length - 1; i++) {
-        var wordAlternativesJSON = wordJSONArray[i];
+    // console.log(data);
+    var responseJSONArray = JSON.parse(data);
 
-        var wordElement = document.createElement('a');
-        wordElement.setAttribute('href', '#');
-        wordElement.setAttribute('class', 'word-a');
-        wordElement.setAttribute('id', wordElementPrefix + i);
-        wordElement.innerText = wordAlternativesJSON.alternatives[0].word;
+    var rowElement;
 
-        wordElement.addEventListener('click', function () {
-            showAlternatives(this);
-        });
+    for (var i = 0; i <= responseJSONArray.length - 1; i++) {
+        var responseJSON = responseJSONArray[i];
 
-        containerDiv.appendChild(wordElement);
-    }
+        var possibleStartDateListUlElement = $('<ul></ul>');
+        for (var j = 0; j <= responseJSON.possibleStartDateList.length - 1; j++) {
+            possibleStartDateListUlElement.append(
+                $('<li></li>', {
+                    text: responseJSON.possibleStartDateList[j]
+                })
+            );
+        }
 
-    updateTextArea();
-}
+        var cottageElement = $('<div></div>', {
+            href: '#',
+            'class': 'thumbnail cottage-a col-md-12'
+        }).append(
+            $('<div></div>', {
+                'class': 'row',
+            }).append(
+                $('<div></div>', {
+                    'class': 'col-md-6',
+                }).append(
+                    $('<img/>', {
+                        'src': responseJSON.imageURL
+                    })
+                )
+            ).append(
+                $('<div></div>', {
+                    'class': 'col-md-6',
+                }).append(
+                    $('<div></div>', {
+                        'class': 'caption',
+                    }).append(
+                        $('<div></div>', {
+                            'class': 'container',
+                        }).append(
+                            $('<div></div>', {
+                                'class': 'row',
+                            }).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-7',
+                                }).append(
+                                    $('<strong></strong>', {
+                                        text: 'Address'
+                                    })
+                                )
+                            ).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-5',
+                                    text: responseJSON.address
+                                })
+                            )
+                        ).append(
+                            $('<div></div>', {
+                                'class': 'row',
+                            }).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-7',
+                                }).append(
+                                    $('<strong></strong>', {
+                                        text: 'Number of Bedroom'
+                                    })
+                                )
+                            ).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-5',
+                                    text: responseJSON.bedroomCount
+                                })
+                            )
+                        ).append(
+                            $('<div></div>', {
+                                'class': 'row',
+                            }).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-7',
+                                }).append(
+                                    $('<strong></strong>', {
+                                        text: 'Number of Places'
+                                    })
+                                )
+                            ).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-5',
+                                    text: responseJSON.totalPlaceCount
+                                })
+                            )
+                        ).append(
+                            $('<div></div>', {
+                                'class': 'row',
+                            }).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-7',
+                                }).append(
+                                    $('<strong></strong>', {
+                                        text: 'Max Distance to a Lake (m)'
+                                    })
+                                )
+                            ).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-5',
+                                    text: responseJSON.distanceToLake
+                                })
+                            )
+                        ).append(
+                            $('<div></div>', {
+                                'class': 'row',
+                            }).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-7',
+                                }).append(
+                                    $('<strong></strong>', {
+                                        text: 'City'
+                                    })
+                                )
+                            ).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-5',
+                                    text: responseJSON.city
+                                })
+                            )
+                        ).append(
+                            $('<div></div>', {
+                                'class': 'row',
+                            }).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-7',
+                                }).append(
+                                    $('<strong></strong>', {
+                                        text: 'Max Distance from City (km)'
+                                    })
+                                )
+                            ).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-5',
+                                    text: responseJSON.distance
+                                })
+                            )
+                        ).append(
+                            $('<div></div>', {
+                                'class': 'row',
+                            }).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-7',
+                                }).append(
+                                    $('<strong></strong>', {
+                                        text: 'Possible Booking Start Date'
+                                    })
+                                )
+                            ).append(
+                                $('<div></div>', {
+                                    'class': 'col-md-5',
+                                }).append(possibleStartDateListUlElement)
+                            )
+                        )
+                    )
+                )
+            )
+        );
 
-function showAlternatives(wordElement) {
-    clearAlternativesDiv();
+        console.log(cottageElement[0]);
 
-    var alternativeListDivElement = document.createElement('div');
+        if (i % 2 == 0) {
+            rowElement = $('<div></div>', {
+                'class': 'row'
+            });
+        }
 
-    var top = wordElement.getBoundingClientRect().top;
-    var left = wordElement.getBoundingClientRect().left;
-
-    alternativeListDivElement.setAttribute('class', 'alternatives-div');
-    alternativeListDivElement.setAttribute('style',
-        'top: ' + top + 'px;' +
-        'left: ' + left + 'px;' +
-        'z-index: ' + 1);
-
-    var idString = wordElement.getAttribute('id');
-    var id = parseInt(idString.substring(wordElementPrefix.length, idString.length));
-    var wordAlternativesJSON = wordJSONArray[id];
-
-    for (var i = 0; i <= wordAlternativesJSON.alternatives.length - 1; i++) {
-        var alternativeElement = document.createElement('a');
-//            alternativeElement.setAttribute('id', wordElementPrefix + i);
-        alternativeElement.setAttribute('href', '#');
-        alternativeElement.setAttribute('class', 'alternative-a');
-        alternativeElement.setAttribute('style',
-            'display: block');
-        alternativeElement.innerText = wordAlternativesJSON.alternatives[i].word;
-        alternativeElement.addEventListener('click', function () {
-            console.log('this.innerText: ' + this.innerText);
-            wordElement.innerText = this.innerText;
-            console.log('wordElement.innerText: ' + wordElement.innerText);
-            clearAlternativesDiv();
-            updateTextArea();
-        });
-
-        alternativeListDivElement.appendChild(alternativeElement);
-    }
-
-    document.body.appendChild(alternativeListDivElement);
-}
-
-window.addEventListener('click', function () {
-    if (!event.target.matches('.word-a')) {
-        clearAlternativesDiv();
-    }
-});
-
-function clearAlternativesDiv() {
-    var alternativesDivArray = document.getElementsByClassName('alternatives-div');
-    while (alternativesDivArray.length > 0) {
-        document.body.removeChild(alternativesDivArray[0]);
+        resultDiv.append(
+            rowElement.append(cottageElement)
+        );
     }
 }
 
 function resetResult() {
-    var containerDiv = document.getElementById('container');
-    while (containerDiv.hasChildNodes()) {
-        containerDiv.removeChild(containerDiv.lastChild);
-    }
-    document.getElementById('textarea-result').value = "";
+    resultDiv.empty();
 }
-
-function updateTextArea() {
-    var text = "";
-    var wordElementArray = document.getElementsByClassName('word-a');
-    for (var i = 0; i <= wordElementArray.length - 1; i++) {
-        var thisWordText = document.getElementById("word-" + i).innerText;
-
-        var prevWordElement = document.getElementById("word-" + (i - 1));
-        if (prevWordElement) {
-            if (prevWordElement.innerText == ".") {
-                thisWordText = thisWordText.capitalizeFirstLetter()
-            }
-        }
-
-        var nextWordElement = document.getElementById("word-" + (i + 1));
-        if (nextWordElement) {
-            if ((nextWordElement.innerText != ",") && (nextWordElement.innerText != ".")) {
-                thisWordText += " ";
-            }
-        }
-
-        text += thisWordText;
-    }
-
-    document.getElementById('textarea-result').value = text;
-}
-
-String.prototype.capitalizeFirstLetter = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
-$(document).on('change', ':file', function () {
-    var input = $(this);
-    var label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    $('#filename').val(label);
-});
 
 function disableForm() {
     $('#img-load').show();
-    // $('#lang').prop('disabled', true);
-    // $('#button-transcript').prop('disabled', true);
     $(':input').prop('disabled', true);
     $('#button-browse').prop('disabled', true);
 }
 
 function enableForm() {
     $('#img-load').hide();
-    // $('#lang').prop('disabled', false);
-    // $('#button-transcript').prop('disabled', false);
     $(':input').prop('disabled', false);
     $('#button-browse').prop('disabled', false);
 }
+
+$(function () {
+    // Bootstrap DateTimePicker v4
+    $('#startDateString').datepicker({
+        dateFormat: 'dd-mm-yy'
+    });
+});

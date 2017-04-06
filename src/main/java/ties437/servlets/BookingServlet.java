@@ -17,11 +17,14 @@ import ties437.entities.Cottage;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -29,7 +32,11 @@ import java.util.*;
 /**
  * Created by chinhnk on 1/4/2016.
  */
+@WebServlet("/booking")
+@MultipartConfig
 public class BookingServlet extends HttpServlet {
+
+    public static final String PATH = "/booking";
 
     public static final String P_BOOKER_NAME = "bookerName";
     public static final String P_MIN_BEDROOM_COUNT = "minBedroomCount";
@@ -74,9 +81,7 @@ public class BookingServlet extends HttpServlet {
      * booking period.
      */
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String bookerName = request.getParameter(P_BOOKER_NAME);
 
@@ -84,7 +89,7 @@ public class BookingServlet extends HttpServlet {
         int minTotalPlaceCount = Integer.parseInt(request.getParameter(P_MIN_TOTAL_PLACE_COUNT));
         double maxDistanceToLake = Double.parseDouble(request.getParameter(P_MAX_DISTANCE_TO_LAKE));
 
-        City city = CityDAO.getByURI(model, OntologyConstants.PREFIX_CBD + request.getParameter(P_CITY));
+        City city = CityDAO.getByURI(model, request.getParameter(P_CITY));
         double maxDistance = Double.parseDouble(request.getParameter(P_MAX_DISTANCE));
 
         String startDateString = request.getParameter(P_START_DATE_STRING);
@@ -111,57 +116,43 @@ public class BookingServlet extends HttpServlet {
             }
         }
 
+        response.setCharacterEncoding("UTF-8");
         PrintWriter writer = response.getWriter();
         writer.print(eligibleResponseArray.toJSONString().replace("\\/", "/"));
-
-//        Model model = BookingServlet.getModelFromRDFa(fileURL);
-//
-//        String ruleSrc = request.getParameter(P_RULES);
-//
-//        InfModel infModel = BookingServlet.applyRules(model, ruleSrc);
-//
-//        String queryString = request.getParameter(P_QUERY);
-//
-//        String responseString = BookingServlet.runQuery(infModel, queryString);
-//
-//        PrintWriter writer = response.getWriter();
-//        writer.print(responseString);
-//
-//        System.out.println(responseString);
-
-
     }
 
     public static void main(String[] args) throws Exception {
 
-        String dataSourcePath = "D:\\Future Data\\WISE\\Spring 2017\\TIES437 Everything to Everything Interfaces\\TIES437-01\\web\\resources\\rdf\\cottage-booking-data.rdf";
-        Model model = RdfUtils.getModelFromRDF(dataSourcePath);
+//        String dataSourcePath = "D:\\Future Data\\WISE\\Spring 2017\\TIES437 Everything to Everything Interfaces\\TIES437-01\\web\\resources\\rdf\\cottage-booking-data.rdf";
+//        Model model = RdfUtils.getModelFromRDF(dataSourcePath);
+//
+//        String bookerName = "Pekka";
+//
+//        int minBedroomCount = 2;
+//        int minTotalPlaceCount = 4;
+//        double maxDistanceToLake = 200.0;
+//
+//        City city = CityDAO.getByURI(model, OntologyConstants.PREFIX_CBD + "Helsinki");
+//        double maxDistance = 7.0;
 
-        String bookerName = "Pekka";
-
-        int minBedroomCount = 2;
-        int minTotalPlaceCount = 4;
-        double maxDistanceToLake = 200.0;
-
-        City city = CityDAO.getByURI(model, OntologyConstants.PREFIX_CBD + "Helsinki");
-        double maxDistance = 7.0;
-
-        String startDateString = "2017-08-07T12:00:00+02:00";
-        SimpleDateFormat formatter = new SimpleDateFormat(Constants.DATE_FORMAT_ONTO);
+        String startDateString = "07-08-2017";
+        SimpleDateFormat formatter = new SimpleDateFormat(Constants.DATE_FORMAT_JS);
 
         Date startDate = formatter.parse(startDateString);
-        int durationDay = 5;
-        int flexDay = 2;
+        System.out.println(startDate);
+//        int durationDay = 5;
+//        int flexDay = 2;
+//
+//        List<Cottage> allCottageList = CottageDAO.getAll(model);
+//        for (Cottage cottage : allCottageList) {
+//            JSONObject eligibleResponse = getEligible(cottage, minBedroomCount, minTotalPlaceCount,
+//                    maxDistanceToLake, city, maxDistance, startDate, durationDay, flexDay);
+//            if (eligibleResponse != null) {
+//                eligibleResponse.put("bookerName", bookerName);
+//                System.out.println(eligibleResponse.toJSONString().replace("\\/", "/"));
+//            }
+//        }
 
-        List<Cottage> allCottageList = CottageDAO.getAll(model);
-        for (Cottage cottage : allCottageList) {
-            JSONObject eligibleResponse = getEligible(cottage, minBedroomCount, minTotalPlaceCount,
-                    maxDistanceToLake, city, maxDistance, startDate, durationDay, flexDay);
-            if (eligibleResponse != null) {
-                eligibleResponse.put("bookerName", bookerName);
-                System.out.println(eligibleResponse.toJSONString().replace("\\/", "/"));
-            }
-        }
 //
 //        // Shit has
 //        String queryString1 = "PREFIX cb: <http://users.jyu.fi/~chnguyen/TIES437/cottage-booking.owl#>\n" +
@@ -289,17 +280,13 @@ public class BookingServlet extends HttpServlet {
                     return null;
                 }
             }
+        } else {
+            for (int i = -flexDay; i <= flexDay; i++) {
+                Date possibleStartDate = Utils.addDays(startDate, i);
+                possibleStartDateList.add(possibleStartDate);
+            }
         }
 
-//     name of the booker;
-//     booking number;
-//     address of the cottage;
-//     image of the cottage (URL of the image in the web);
-//     actual amount of places in the cottage;
-//     actual amount of bedrooms in the cottage;
-//     actual distance to the lake (meters);
-//     nearest city and a distance to it from the cottage;
-//     booking period.
         Collections.sort(possibleStartDateList, new Comparator<Date>() {
             public int compare(Date o1, Date o2) {
                 return Long.compare(Utils.getDateDiff(startDate, o1), Utils.getDateDiff(startDate, o2));
@@ -308,17 +295,20 @@ public class BookingServlet extends HttpServlet {
 
         JSONObject obj = new JSONObject();
 
+        DecimalFormat df = new DecimalFormat("#.##");
+
         obj.put("address", cottage.getName());
         obj.put("imageURL", cottage.getImageURL());
         obj.put("bedroomCount", cottage.getBedroomList().size());
         obj.put("totalPlaceCount", totalPlaceCount);
-        obj.put("distanceToLake", cottage.getDistanceToLake());
+        obj.put("distanceToLake", df.format(cottage.getDistanceToLake()));
         obj.put("city", city.getName());
-        obj.put("distance", distance);
+        obj.put("distance", df.format(distance));
 
         JSONArray possibleStartDateJsonArray = new JSONArray();
+        SimpleDateFormat formatter = new SimpleDateFormat(Constants.DATE_FORMAT_JS);
         for (Date date : possibleStartDateList) {
-            possibleStartDateJsonArray.add(date.toString());
+            possibleStartDateJsonArray.add(formatter.format(date));
         }
         obj.put("possibleStartDateList", possibleStartDateJsonArray);
 

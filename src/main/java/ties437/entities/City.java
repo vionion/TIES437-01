@@ -52,7 +52,7 @@ public class City extends Entity{
     @Override
     public String toString() {
         return "City{" +
-                "uri=<" + uri + ">" +
+                "uri=" + uri +
                 ", name='" + name + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
