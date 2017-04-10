@@ -27,7 +27,7 @@
                         cBooking:durationDay "" ;
                         cBooking:flexDay "" ;
                         sswap:mapsTo [
-                            rdf:type sswap:Object, cBooking:BookingResult ;
+                            rdf:type sswap:Object, cBooking:Booking ;
                         ]
                     ]
         ].

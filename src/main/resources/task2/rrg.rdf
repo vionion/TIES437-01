@@ -27,7 +27,7 @@
                         cBooking:durationDay "10" ;
                         cBooking:flexDay "2" ;
                         sswap:mapsTo [
-                            rdf:type sswap:Object, cBooking:BookingResult ;
+                            rdf:type sswap:Object, cBooking:Booking ;
                             cBooking:cottage [
                                 rdf:type cBooking:Cottage;
                                 cBooking:bedroom [
@@ -35,12 +35,14 @@
                                     cBooking:hasPlaceCount "2";
                                 ];
                                 cBooking:hasDistanceToLake "200";
-                                cBooking:hasImageURL "http://www.example.org/img.jpg";
+                                cBooking:hasImageURL "http://users.jyu.fi/~chnguyen/TIES437/Lyhdekatu%207";
                                 cBooking:hasAddress "Helsinki, Luhdekatu 7";
                                 cBooking:hasLogitude "25.717007";
                                 cBooking:hasLatitude "62.252735";
                                 cBooking:hasName "Luhdekatu 7";
                             ];
+                            cBooking:hasStartDate "01-07-2017" ;
+                            cBooking:hasEndDate "07-07-2017" ;
                             cBooking:bookerName "Pekka" ;
                         ]
                     ]
