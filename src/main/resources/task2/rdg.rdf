@@ -1,0 +1,33 @@
+@prefix rdf:
+<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+        @prefix owl: <http://www.w3.org/2002/07/owl#> .
+        @prefix sswap: <http://sswapmeet.sswap.info/sswap/> .
+        @prefix cBookinging: <http://users.jyu.fi/~chnguyen/TIES437/cottage-booking.owl#> .
+
+        resource:cottageBookingService
+            rdf:type sswap:Resource, cBooking:BookingService;
+            sswap:providedBy resource:resourceProvider;
+            sswap:name “Cottage booking service";
+            sswap:oneLineDescription "Service returns available cottage bookings based on request.“;
+            sswap:operatesOn [
+                rdf:type sswap:Graph ;
+                    sswap:hasMapping [
+                        rdf:type sswap:Subject, cBooking:BookingRequest;
+                        cBooking:bookerName "" ;
+                        cBooking:minBedroomCount "" ;
+                        cBooking:minTotalPlaceCount "" ;
+                        cBooking:maxDistanceToLake "" ;
+                        cBooking:city [
+                            rdf:type cBooking:City;
+                            cBooking:hasLogitude "";
+                            cBooking:hasLatitude "";
+                            cBooking:hasName "";
+                        ];
+                        cBooking:startDateString "" ;
+                        cBooking:durationDay "" ;
+                        cBooking:flexDay "" ;
+                        sswap:mapsTo [
+                            rdf:type sswap:Object, cBooking:BookingResult ;
+                        ]
+                    ]
+        ].
