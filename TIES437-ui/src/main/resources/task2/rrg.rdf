@@ -1,0 +1,49 @@
+@prefix rdf:
+<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+        @prefix owl: <http://www.w3.org/2002/07/owl#> .
+        @prefix sswap: <http://sswapmeet.sswap.info/sswap/> .
+        @prefix cBookinging: <http://users.jyu.fi/~chnguyen/TIES437/cottage-booking.owl#> .
+
+        resource:cottageBookingService
+            rdf:type sswap:Resource, cBooking:BookingService;
+            sswap:providedBy resource:resourceProvider;
+            sswap:name “Cottage booking service";
+            sswap:oneLineDescription "Service returns available cottage bookings based on request.“;
+            sswap:operatesOn [
+                rdf:type sswap:Graph ;
+                    sswap:hasMapping [
+                        rdf:type sswap:Subject, cBooking:BookingRequest;
+                        cBooking:bookerName "Pekka" ;
+                        cBooking:minBedroomCount "1" ;
+                        cBooking:minTotalPlaceCount "2" ;
+                        cBooking:maxDistanceToLake "500" ;
+                        cBooking:city [
+                            rdf:type cBooking:City;
+                            cBooking:hasLogitude "24.938366";
+                            cBooking:hasLatitude "60.169.85";
+                            cBooking:hasName "Helsinki";
+                        ];
+                        cBooking:startDateString "04-10-2016" ;
+                        cBooking:durationDay "10" ;
+                        cBooking:flexDay "2" ;
+                        sswap:mapsTo [
+                            rdf:type sswap:Object, cBooking:Booking ;
+                            cBooking:cottage [
+                                rdf:type cBooking:Cottage;
+                                cBooking:bedroom [
+                                    rdf:type cBooking:Bedroom;
+                                    cBooking:hasPlaceCount "2";
+                                ];
+                                cBooking:hasDistanceToLake "200";
+                                cBooking:hasImageURL "http://users.jyu.fi/~chnguyen/TIES437/Lyhdekatu%207";
+                                cBooking:hasAddress "Helsinki, Luhdekatu 7";
+                                cBooking:hasLogitude "25.717007";
+                                cBooking:hasLatitude "62.252735";
+                                cBooking:hasName "Luhdekatu 7";
+                            ];
+                            cBooking:hasStartDate "01-07-2017" ;
+                            cBooking:hasEndDate "07-07-2017" ;
+                            cBooking:bookerName "Pekka" ;
+                        ]
+                    ]
+        ].
