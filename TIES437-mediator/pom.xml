@@ -416,7 +416,6 @@
             <scope>system</scope>
             <systemPath>${basedir}\src\lib\openrdf-sesame-2.7.7.jar</systemPath>
         </dependency>
-
         <!-- SSWAP - END -->
     </dependencies>
 
