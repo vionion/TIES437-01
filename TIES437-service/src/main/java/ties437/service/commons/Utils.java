@@ -1,5 +1,9 @@
 package ties437.service.commons;
 
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -30,5 +34,29 @@ public class Utils {
     public static long getDateDiff(Date date1, Date date2) {
         long diffInMillies = date2.getTime() - date1.getTime();
         return Math.abs(TimeUnit.DAYS.convert(diffInMillies,TimeUnit.MILLISECONDS));
+    }
+
+    public static InputStream getInputStreamFromURL(String urlString) throws IOException {
+        URL url = new URL(urlString);
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+
+        if (conn.getResponseCode() != 200) {
+            throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+        }
+
+//        BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+//        String documentText = "";
+//        String line;
+//        while ((line = br.readLine()) != null) {
+//            documentText += line + "\n";
+//        }
+//
+//        conn.disconnect();
+//
+//        InputStream stream = new ByteArrayInputStream(documentText.getBytes());
+        InputStream stream = conn.getInputStream();
+        return stream;
     }
 }
