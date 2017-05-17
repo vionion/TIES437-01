@@ -41,7 +41,7 @@
         </dependency>
 
         <!-- SSWAP - START -->
-        <!-- https://mvnrepository.com/artifact/org.antlr/antlr-runtime -->
+        <!--https://mvnrepository.com/artifact/org.antlr/antlr-runtime-->
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr-runtime</artifactId>
@@ -81,7 +81,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>ejb3-persistence</artifactId>
-            <version>3.3.2.Beta1</version>
+            <version>1.0.2.GA</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
@@ -105,7 +105,7 @@
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-jmx</artifactId>
-            <version>3.0-rc3</version>
+            <version>3.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.inject.extensions/guice-multibindings -->
         <dependency>
@@ -131,11 +131,11 @@
             <artifactId>iri</artifactId>
             <version>0.8</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javassist/javassist -->
+        <!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
         <dependency>
-            <groupId>javassist</groupId>
+            <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>3.12.1.GA</version>
+            <version>3.14.0-GA</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
         <dependency>
@@ -147,7 +147,7 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.2.3</version>
+            <version>2.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.hp.hpl.jena/jena -->
         <dependency>
@@ -191,83 +191,11 @@
             <artifactId>lucene-core</artifactId>
             <version>2.3.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.openrdf.sesame/sesame -->
-        <!--<dependency>-->
-        <!--<groupId>org.openrdf.sesame</groupId>-->
-        <!--<artifactId>sesame</artifactId>-->
-        <!--<version>2.7.7</version>-->
-        <!--</dependency>-->
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-cli -->
+        <!--https://mvnrepository.com/artifact/org.openrdf.sesame/sesame-->
         <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-cli</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-core -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-core</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-datatypes -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-datatypes</artifactId>
-            <version>2.3.6-ansell</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-el -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-el</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-explanation -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-explanation</artifactId>
-            <version>2.3.6-ansell</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-jena -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-jena</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-modularity -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-modularity</artifactId>
-            <version>2.3.3</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sourceforge.owlapi/pellet-owlapi-ignazio1977 -->
-        <dependency>
-            <groupId>net.sourceforge.owlapi</groupId>
-            <artifactId>pellet-owlapi-ignazio1977</artifactId>
-            <version>2.4.0-ignazio1977</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-owlapiv3 -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-owlapiv3</artifactId>
-            <version>2.3.3</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-pellint -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-pellint</artifactId>
-            <version>2.3.6-ansell</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-query -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-query</artifactId>
-            <version>2.3.6-ansell</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ansell.pellet/pellet-rules -->
-        <dependency>
-            <groupId>com.github.ansell.pellet</groupId>
-            <artifactId>pellet-rules</artifactId>
-            <version>2.3.6-ansell</version>
+            <groupId>org.openrdf.sesame</groupId>
+            <artifactId>sesame</artifactId>
+            <version>2.7.7</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.sun.xml/relaxngDatatype -->
         <dependency>
@@ -305,118 +233,259 @@
             <artifactId>xsdlib</artifactId>
             <version>20060615</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sourceforge.owlapi/owlapi-distribution -->
+
+        <!-- aterm-java-1.6 -->
         <dependency>
-            <groupId>net.sourceforge.owlapi</groupId>
-            <artifactId>owlapi-distribution</artifactId>
-            <version>5.1.0</version>
+            <groupId>aterm-java-1.6</groupId>
+            <artifactId>aterm-java-1.6</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${basedir}\lib\aterm-java-1.6.jar</systemPath>
         </dependency>
         <!-- sswap -->
         <dependency>
             <groupId>sswap</groupId>
             <artifactId>sswap</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\sswap.jar</systemPath>
+            <version>1.0</version>
+            <systemPath>${basedir}\lib\sswap.jar</systemPath>
         </dependency>
         <!-- empire-0.8.3 -->
         <dependency>
             <groupId>empire-0.8.3</groupId>
             <artifactId>empire-0.8.3</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\empire-0.8.3.jar</systemPath>
+            <version>0.8.3</version>
+            <systemPath>${basedir}\lib\empire-0.8.3.jar</systemPath>
         </dependency>
         <!-- empire-test-0.8.3 -->
         <dependency>
             <groupId>empire-test-0.8.3</groupId>
             <artifactId>empire-test-0.8.3</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\empire-test-0.8.3.jar</systemPath>
+            <version>0.8.3</version>
+            <systemPath>${basedir}\lib\empire-test-0.8.3.jar</systemPath>
         </dependency>
         <!-- empire-jena-0.8.3 -->
         <dependency>
             <groupId>empire-jena-0.8.3</groupId>
             <artifactId>empire-jena-0.8.3</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\empire-jena-0.8.3.jar</systemPath>
+            <version>0.8.3</version>
+            <systemPath>${basedir}\lib\empire-jena-0.8.3.jar</systemPath>
         </dependency>
         <!-- empire-sesame-0.8.3 -->
         <dependency>
             <groupId>empire-sesame-0.8.3</groupId>
             <artifactId>empire-sesame-0.8.3</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\empire-sesame-0.8.3.jar</systemPath>
+            <version>0.8.3</version>
+            <systemPath>${basedir}\lib\empire-sesame-0.8.3.jar</systemPath>
         </dependency>
         <!-- empire-sesame-test-0.8.3 -->
         <dependency>
             <groupId>empire-sesame-test-0.8.3</groupId>
             <artifactId>empire-sesame-test-0.8.3</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\empire-sesame-test-0.8.3.jar</systemPath>
+            <version>0.8.3</version>
+            <systemPath>${basedir}\lib\empire-sesame-test-0.8.3.jar</systemPath>
         </dependency>
         <!-- empire-sesame-test-0.8.3 -->
         <dependency>
             <groupId>cp-common-fourstore-0.3.1</groupId>
             <artifactId>cp-common-fourstore-0.3.1</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-fourstore-0.3.1.jar</systemPath>
+            <version>0.3.1</version>
+            <systemPath>${basedir}\lib\cp-common-fourstore-0.3.1.jar</systemPath>
         </dependency>
         <!-- cp-common-openrdf-2.0.1 -->
         <dependency>
             <groupId>cp-common-openrdf-2.0.1</groupId>
             <artifactId>cp-common-openrdf-2.0.1</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-openrdf-2.0.1.jar</systemPath>
+            <version>2.0.1</version>
+            <systemPath>${basedir}\lib\cp-common-openrdf-2.0.1.jar</systemPath>
         </dependency>
         <!-- cp-common-utils-3.1.1.jar -->
         <dependency>
             <groupId>cp-common-utils-3.1.1</groupId>
             <artifactId>cp-common-utils-3.1.1</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-utils-3.1.1.jar</systemPath>
+            <version>3.1.1</version>
+            <systemPath>${basedir}\lib\cp-common-utils-3.1.1.jar</systemPath>
         </dependency>
         <!-- cp-common-utils-1.1.jar -->
         <dependency>
             <groupId>cp-common-utils-1.1</groupId>
             <artifactId>cp-common-utils-1.1</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-utils-1.1.jar</systemPath>
+            <version>1.1</version>
+            <systemPath>${basedir}\lib\cp-common-utils-1.1.jar</systemPath>
         </dependency>
         <!-- cp-common-utils-2.3.jar -->
         <dependency>
             <groupId>cp-common-utils-2.3</groupId>
             <artifactId>cp-common-utils-2.3</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-utils-2.3.jar</systemPath>
+            <version>2.3</version>
+            <systemPath>${basedir}\lib\cp-common-utils-2.3.jar</systemPath>
         </dependency>
         <!-- cp-common-utils-2.4.1.1.jar -->
         <dependency>
             <groupId>cp-common-utils-2.4.1.1</groupId>
             <artifactId>cp-common-utils-2.4.1.1</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-utils-2.4.1.1.jar</systemPath>
+            <version>2.4.1.1</version>
+            <systemPath>${basedir}\lib\cp-common-utils-2.4.1.1.jar</systemPath>
         </dependency>
         <!-- cp-common-utils-2.5.0.jar -->
         <dependency>
             <groupId>cp-common-utils-2.5.0</groupId>
             <artifactId>cp-common-utils-2.5.0</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-utils-2.5.0.jar</systemPath>
+            <version>2.5.0</version>
+            <systemPath>${basedir}\lib\cp-common-utils-2.5.0.jar</systemPath>
         </dependency>
         <!-- cp-common-utils-3.0.jar -->
         <dependency>
             <groupId>cp-common-utils-3.0</groupId>
             <artifactId>cp-common-utils-3.0</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\cp-common-utils-3.0.jar</systemPath>
+            <version>3.0</version>
+            <systemPath>${basedir}\lib\cp-common-utils-3.0.jar</systemPath>
         </dependency>
         <!-- openrdf-sesame-2.7.7.jar -->
         <dependency>
             <groupId>openrdf-sesame-2.7.7</groupId>
             <artifactId>openrdf-sesame-2.7.7</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\openrdf-sesame-2.7.7.jar</systemPath>
+            <version>2.7.7</version>
+            <systemPath>${basedir}\lib\openrdf-sesame-2.7.7.jar</systemPath>
+        </dependency>
+
+        <!-- owlapi and pellet since there is no specified version in the jars -->
+        <!-- owlapi-bin.jar -->
+        <dependency>
+            <groupId>owlapi</groupId>
+            <artifactId>owlapi</artifactId>
+            <scope>system</scope>
+            <version>3.2.4</version>
+            <systemPath>${basedir}\lib\owlapi-bin.jar</systemPath>
+        </dependency>
+        <!-- pellet-cli.jar -->
+        <dependency>
+            <groupId>pellet-cli</groupId>
+            <artifactId>pellet-cli</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-cli.jar</systemPath>
+        </dependency>
+        <!-- pellet-core.jar -->
+        <dependency>
+            <groupId>pellet-core</groupId>
+            <artifactId>pellet-core</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-core.jar</systemPath>
+        </dependency>
+        <!--pellet-datatypes.jar-->
+        <dependency>
+            <groupId>pellet-datatypes</groupId>
+            <artifactId>pellet-datatypes</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-datatypes.jar</systemPath>
+        </dependency>
+        <!--pellet-dig.jar-->
+        <dependency>
+            <groupId>pellet-dig</groupId>
+            <artifactId>pellet-dig</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-dig.jar</systemPath>
+        </dependency>
+        <!--pellet-el.jar-->
+        <dependency>
+            <groupId>pellet-el</groupId>
+            <artifactId>pellet-el</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-el.jar</systemPath>
+        </dependency>
+        <!--pellet-explanation.jar-->
+        <dependency>
+            <groupId>pellet-explanation</groupId>
+            <artifactId>pellet-explanation</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-explanation.jar</systemPath>
+        </dependency>
+        <!--pellet-jena.jar-->
+        <dependency>
+            <groupId>pellet-jena</groupId>
+            <artifactId>pellet-jena</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-jena.jar</systemPath>
+        </dependency>
+        <!--pellet-modularity.jar-->
+        <dependency>
+            <groupId>pellet-modularity</groupId>
+            <artifactId>pellet-modularity</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-modularity.jar</systemPath>
+        </dependency>
+        <!--pellet-owlapi.jar-->
+        <dependency>
+            <groupId>pellet-owlapi</groupId>
+            <artifactId>pellet-owlapi</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-owlapi.jar</systemPath>
+        </dependency>
+        <!--pellet-owlapiv3.jar-->
+        <dependency>
+            <groupId>pellet-owlapiv3</groupId>
+            <artifactId>pellet-owlapiv3</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-owlapiv3.jar</systemPath>
+        </dependency>
+        <!--pellet-pellint.jar-->
+        <dependency>
+            <groupId>pellet-pellint</groupId>
+            <artifactId>pellet-pellint</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-pellint.jar</systemPath>
+        </dependency>
+        <!--pellet-query.jar-->
+        <dependency>
+            <groupId>pellet-query</groupId>
+            <artifactId>pellet-query</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-query.jar</systemPath>
+        </dependency>
+        <!--pellet-rules.jar-->
+        <dependency>
+            <groupId>pellet-rules</groupId>
+            <artifactId>pellet-rules</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-rules.jar</systemPath>
+        </dependency>
+        <!--pellet-test.jar-->
+        <dependency>
+            <groupId>pellet-test</groupId>
+            <artifactId>pellet-test</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}\lib\pellet-test.jar</systemPath>
         </dependency>
         <!-- SSWAP - END -->
+
+        <!-- https://mvnrepository.com/artifact/org.xenei/PA4RDF -->
+        <dependency>
+            <groupId>org.xenei</groupId>
+            <artifactId>PA4RDF</artifactId>
+            <version>1.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.okkam.owl/jaob-core -->
+        <dependency>
+        <groupId>org.okkam.owl</groupId>
+        <artifactId>jaob-core</artifactId>
+        <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

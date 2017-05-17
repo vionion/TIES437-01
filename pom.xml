@@ -7,6 +7,7 @@
     <groupId>TIES437</groupId>
     <artifactId>TIES437</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <modules>
         <module>TIES437-ui</module>
